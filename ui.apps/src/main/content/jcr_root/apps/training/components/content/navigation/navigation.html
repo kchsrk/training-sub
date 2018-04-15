@@ -1,23 +1,12 @@
 <nav class="navbar navbar-default">
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav" data-sly-list.child="${currentPage.listChildren}">
-            <li class="${childList.first ? 'active' : ''}">
-                <sly data-sly-test="${!child.listChildren}">
-					<a href="${child.path}.html">${child.title}</a>
-                </sly>
-                <sly data-sly-test="${child.listChildren}">
-					<a href="${child.path}.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${child.title} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" data-sly-list="${child.listChildren}">
-                    	<li><a href="${item.path}.html">${item.title}</a></li>
-                    </ul>
-                </sly>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-sly-use.nav="com.org.training.core.use.Navigation">
+        <ul class="nav navbar-nav" data-sly-list.navPage="${nav.navList}">
+            <li>
+				<a href="${navPage.link}.html">${navPage.title}</a>
+				<ul data-sly-test="${navPage.hasChildPages}" data-sly-list="${navPage.childLinks}">
+					<li><a href="${item.link}.html">${item.title}</a></li>
+				</ul>
             </li>
         </ul>
     </div>
 </nav>
-
-<div data-sly-use.obj="${'com.org.training.core.use.Title' @ title='from component', desc='some desc'}">
-	${obj.title}
-    ${obj.desc}
-    ${obj.concatenatedStr}
-</div> 
