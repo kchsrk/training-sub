@@ -26,7 +26,7 @@ public class NavItem {
 	}
 
 	public String getTitle() {
-		return getNavTitle();
+		return this.getNavPage().getTitle();
 	}
 
 	public void setTitle(String title) {
@@ -57,23 +57,21 @@ public class NavItem {
 
 		while (pItr.hasNext()) {
 			Page child = pItr.next();
-			if (!child.isHideInNav()) {
 				childNav = new NavItem();
 				childNav.setNavPage(child);
 				childLinks.add(childNav);
-			}
 		}
 
 		return childLinks;
 	}
 
-	private String getNavTitle() {
+/*	private String getNavTitle() {
 		String title = this.getNavPage().getNavigationTitle();
 		if (title == null)
 			title = this.getNavPage().getPageTitle();
 		if (title == null)
 			title = this.getNavPage().getTitle();
 		return title;
-	}
+	}*/
 
 }

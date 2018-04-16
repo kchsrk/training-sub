@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-sly-use.nav="com.org.training.core.use.Navigation">
         <ul class="nav navbar-nav" data-sly-list.navPage="${nav.navList}">
-            <li>
+            <li class="${navPage.link == currentPage.path ? 'active' : ''}">
 				<a href="${navPage.link}.html">${navPage.title}</a>
 				<ul data-sly-test="${navPage.hasChildPages}" data-sly-list="${navPage.childLinks}">
 					<li><a href="${item.link}.html">${item.title}</a></li>
